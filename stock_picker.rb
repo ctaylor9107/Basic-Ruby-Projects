@@ -9,5 +9,10 @@ def stock_picker(stock_array)
       i += 1
     end
   end
-  p day_range_and_amount
+
+
+  final_output = day_range_and_amount.min_by { |range, difference| difference }
+  final_output[0]
+
+
 end

@@ -1,6 +1,6 @@
 def substrings(word_or_phrase, substring_dictionary)
 
-  p the_string = word_or_phrase.downcase
+  the_string = word_or_phrase.downcase
   dictionary_array = substring_dictionary
 
   output_hash = Hash.new

@@ -1,11 +1,8 @@
 def caesar_cipher(string, num)
-  cipher_letters = string.split("")
-  cipher_numbers = cipher_letters.map { |letter| letter.ord}
-
-
+  cipher_letters = string.split('')
+  cipher_numbers = cipher_letters.map { |letter| letter.ord }
 
   updated_cipher_numbers = cipher_numbers.map do |digit|
-
     if digit >= 97 && digit <= 122
 
       i = num
@@ -40,7 +37,7 @@ def caesar_cipher(string, num)
     end
   end
 
-  new_array = updated_cipher_numbers.map { |number| number.chr}
+  new_array = updated_cipher_numbers.map { |number| number.chr }
 
   p new_array.join
 end

@@ -27,4 +27,35 @@ class GameBoard
       return "dumb"
     end
   end
+
+
+  def player_winner?(player_value)
+    if (@game_board[0][0] == player_value) && (@game_board[0][2] == player_value) && (@game_board[0][4] == player_value)
+      return true
+    elsif (@game_board[1][0] == player_value) && (@game_board[1][2] == player_value) && (@game_board[1][4] == player_value)
+      return true
+    elsif (@game_board[2][0] == player_value) && (@game_board[2][2] == player_value) && (@game_board[2][4] == player_value)
+      return true
+    elsif (@game_board[0][0] == player_value) && (@game_board[1][0] == player_value) && (@game_board[2][0] == player_value)
+      return true
+    elsif (@game_board[0][2] == player_value) && (@game_board[1][2] == player_value) && (@game_board[2][2] == player_value)
+      return true
+    elsif (@game_board[0][4] == player_value) && (@game_board[1][4] == player_value) && (@game_board[2][4] == player_value)
+      return true
+    elsif (@game_board[0][0] == player_value) && (@game_board[1][2] == player_value) && (@game_board[2][4] == player_value)
+      return true
+    elsif (@game_board[2][0] == player_value) && (@game_board[1][2] == player_value) && (@game_board[0][4] == player_value)
+      return true
+    else
+      return false
+    end
+  end
+
+  def cat_wins?
+    if (@game_board[0].include?("_") == false)  && (@game_board[1].include?("_") == false)  && (@game_board[2].include?(" ") == false)
+      return true
+    else
+      return false
+    end
+  end
 end

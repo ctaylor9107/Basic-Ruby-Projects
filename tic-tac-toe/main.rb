@@ -20,16 +20,31 @@ puts board.game_board
 # game loop
 
 i = player1
-until (board.game_board[0].include?("_") == false)  && (board.game_board[1].include?("_") == false)  && (board.game_board[2].include?(" ") == false)
+ until board.cat_wins? == true
   output = board.update_board(i.value, i.player_row(board.game_board, i.player), i.player_column(board.game_board, i.player))
     if output == "dumb"
       i == i
+    elsif board.player_winner?("x")
+      break
+    elsif board.player_winner?("o")
+      break
     elsif i == player1
       i = player2
     elsif i == player2
       i = player1
     end
 end
+
+
+if board.player_winner?("x") == true
+  puts "\nPlayer 1 is the winner!\n"
+elsif board.player_winner?("o") == true
+  puts "\nPlayer 2 is the winner!\n"
+elsif board.cat_wins? == true
+  puts "\nSorry, Cat wins. Try again?"
+end
+
+puts "\nGame Over"
 
 
 

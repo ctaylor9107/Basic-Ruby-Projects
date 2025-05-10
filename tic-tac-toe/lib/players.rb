@@ -17,9 +17,9 @@ class Player
     elsif row_choice.downcase == "bottom"
       2
     else
-      puts "\nInvalid input,#{current_player}try again\n"
+      puts "\nInvalid input, #{current_player} try again\n"
       puts view_gameboard_method
-      player_row(view_gameboard_method)
+      player_row(view_gameboard_method, current_player)
     end
   end
 
@@ -34,9 +34,9 @@ class Player
     elsif column_choice.downcase == "right"
       4
     else
-      puts "\nInvalid input,#{current_player} try again\n"
+      puts "\nInvalid input, #{current_player} try again\n"
       puts view_gameboard_method
-      player_column(view_gameboard_method)
+      player_column(view_gameboard_method, current_player)
     end
   end
 end

@@ -21,7 +21,7 @@ puts board.game_board
 
 i = player1
 until (board.game_board[0].include?("_") == false)  && (board.game_board[1].include?("_") == false)  && (board.game_board[2].include?(" ") == false)
-  output = board.update_board(i.value, i.player_row(board.game_board), i.player_column(board.game_board))
+  output = board.update_board(i.value, i.player_row(board.game_board, i.player), i.player_column(board.game_board, i.player))
     if output == "dumb"
       i == i
     elsif i == player1

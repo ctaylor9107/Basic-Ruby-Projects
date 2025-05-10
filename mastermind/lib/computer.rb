@@ -11,6 +11,6 @@ class Computer
       num = rand(6)
       computer_secret_code.push(color_list[num])
     end
-    puts computer_secret_code
+    computer_secret_code
   end
 end

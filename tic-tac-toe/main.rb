@@ -34,7 +34,7 @@ i = player1
     elsif i == player2
       i = player1
     end
-end
+ end
 
 puts "\nGame Over"
 

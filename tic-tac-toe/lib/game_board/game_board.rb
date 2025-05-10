@@ -20,9 +20,12 @@ class GameBoard
     
     if @game_board[row][column] == " " || @game_board[row][column] == "_"
       @game_board[row][column] = player_value
+      puts " "
       puts @game_board
     else
+      puts " "
       puts "Pick a different spot"
+      puts " "
       puts @game_board
       return "dumb"
     end

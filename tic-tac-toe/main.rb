@@ -13,6 +13,7 @@ player2 = Player.new("Player 2", "o")
 
 # first display of tic-tac-toe grid
 
+puts " "
 puts board.game_board
 
 
@@ -35,6 +36,7 @@ i = player1
     end
 end
 
+puts "\nGame Over"
 
 if board.player_winner?("x") == true
   puts "\nPlayer 1 is the winner!\n"
@@ -43,8 +45,6 @@ elsif board.player_winner?("o") == true
 elsif board.cat_wins? == true
   puts "\nSorry, Cat wins. Try again?"
 end
-
-puts "\nGame Over"
 
 
 

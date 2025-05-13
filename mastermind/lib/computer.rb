@@ -13,16 +13,6 @@ class Computer
     end
     computer_secret_code
   end
-  
-
-  def computer_code_match?(player_code_guess, secret_code)
-    if player_code_guess == secret_code
-      return true
-    elsif player_code_guess != secret_code
-      return false
-    end
-  end
-
 
   def red_peg_positions(player_code_guess, secret_code)
     new_code = []

@@ -24,6 +24,8 @@ class Game
     game_start = gets
   end
 
+  
 
+  
 
 end

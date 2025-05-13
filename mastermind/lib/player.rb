@@ -34,7 +34,7 @@ class Player
         i = player_code.length
       end
     end
-    player_code
+    return player_code
   end
 
 

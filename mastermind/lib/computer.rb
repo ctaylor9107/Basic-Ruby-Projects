@@ -36,7 +36,9 @@ class Computer
 
 
   def red_peg(positions, red)
-    positions.each { |value| puts red}
+    red_pegs = []
+    positions.each { |value| red_pegs.push(red)}
+    return red_pegs
   end
 
 
@@ -46,15 +48,20 @@ class Computer
 
 
   def white_peg(player_check, computer_check, white)
+    white_pegs = []
     player_check.each do | color |
       if computer_check.include?(color)
-        puts white
+        white_pegs.push(white)
         computer_check.slice!(computer_check.find_index { |value| value == color})
       else
         ""
       end
     end
+    return white_pegs
   end
 
 
+  def computer_response(red_peg, white_peg)
+    return red_peg + white_peg
+  end
 end

@@ -27,12 +27,18 @@ white_peg = color_list[5]
 game.game_rules(color_list, red_peg, white_peg)
 puts computer_secret_code = comp.secret_code(colors.colors_array)
 guess = player1.player_turn(color_list)
+
 comp.computer_code_match?(guess, computer_secret_code)
+
 positions = comp.red_peg_positions(guess, computer_secret_code)
-comp.red_peg(positions, red_peg)
+# comp.red_peg(positions, red_peg)
+
 player_check = comp.white_colors_to_check(positions, guess)
 computer_check = comp.white_colors_to_check(positions, computer_secret_code)
-comp.white_peg(player_check, computer_check, white_peg)
+# comp.white_peg(player_check, computer_check, white_peg)
+
+puts "\nComputer Response: "
+puts comp.computer_response(comp.red_peg(positions, red_peg), comp.white_peg(player_check, computer_check, white_peg))
 
 
 

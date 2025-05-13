@@ -5,7 +5,7 @@ class Player
   end
 
   def player_turn(color_list)
-    puts "Make a choice from the below colors"
+    puts "\nMake a choice from the below colors"
     puts "\n1. #{color_list[0]}"
     puts "2. #{color_list[1]}"
     puts "3. #{color_list[2]}"
@@ -16,7 +16,7 @@ class Player
   end
 
   def player_code_guess(color_list)
-    puts "Choose from above: 1, 2, 3, 4, 5, or 6"
+    puts "\nChoose from above: 1, 2, 3, 4, 5, or 6"
     puts " "
     create_player_choice(color_list)
   end

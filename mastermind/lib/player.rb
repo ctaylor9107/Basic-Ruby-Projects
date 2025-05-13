@@ -27,7 +27,7 @@ class Player
     while i < 4
       player_input = gets.to_i
       if player_input.between?(1, 6) == false
-        puts "Invalid input, please try again"
+        puts "Invalid input, please try again:"
       elsif player_input.between?(1, 6) == true
         output = "Your guess: #{player_code.push(color_list[player_input - 1]).join(", ")}"
         puts output

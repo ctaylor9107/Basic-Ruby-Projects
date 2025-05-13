@@ -35,46 +35,34 @@ rules = game.game_rules(color_list, red_peg, white_peg)
 game.start_game?(rules)
 
 puts ""
-puts computer_secret_code = comp.secret_code(colors.colors_array) 
-puts ""
 
-i = 1
-until i == 13
-  puts "Round #{i}"
-  player_turn = player1.player_turn(color_list)
-  if player_turn == computer_secret_code
-    player_win = true
-    break
-  elsif player_turn != computer_secret_code
-    player_win = false
-    positions = comp.red_peg_positions(player_turn, computer_secret_code)
-    player_check = comp.white_colors_to_check(positions, player_turn)
-    computer_check = comp.white_colors_to_check(positions, computer_secret_code)
-    computer_response =  comp.computer_response(comp.red_peg(positions, red_peg), comp.white_peg(player_check, computer_check, white_peg))
-    puts "\nSorry, that is not the correct code."
-    puts "Here is the computer's feedback:"
-    puts " "
-    puts computer_response
-    puts " "
-    i += 1
+play_game = true
+until play_game == false
+  computer_secret_code = comp.secret_code(colors.colors_array) 
+  puts ""
+  i = 1
+  until i == 13
+    puts "Round #{i}"
+    player_turn = player1.player_turn(color_list)
+    if player_turn == computer_secret_code
+      player_win = true
+      break
+    elsif player_turn != computer_secret_code
+      player_win = false
+      positions = comp.red_peg_positions(player_turn, computer_secret_code)
+      player_check = comp.white_colors_to_check(positions, player_turn)
+      computer_check = comp.white_colors_to_check(positions, computer_secret_code)
+      computer_response =  comp.computer_response(comp.red_peg(positions, red_peg), comp.white_peg(player_check, computer_check, white_peg))
+      puts "\nSorry, that is not the correct code."
+      puts "Here is the computer's feedback:"
+      puts " "
+      puts computer_response
+      puts " "
+      i += 1
+    end
   end
+  again_maybe = game.who_won?(player_win, computer_secret_code)
+  play_game = game.play_again?(again_maybe)
 end
-puts player_win
-
-
-# puts guess
-# comp.computer_code_match?(guess, computer_secret_code)
-
-# positions = comp.red_peg_positions(guess, computer_secret_code)
-# # comp.red_peg(positions, red_peg)
-
-# player_check = comp.white_colors_to_check(positions, guess)
-# computer_check = comp.white_colors_to_check(positions, computer_secret_code)
-# # comp.white_peg(player_check, computer_check, white_peg)
-
-# puts "\nComputer Response: "
-# puts comp.computer_response(comp.red_peg(positions, red_peg), comp.white_peg(player_check, computer_check, white_peg))
-
-
 
 

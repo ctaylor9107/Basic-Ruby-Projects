@@ -21,10 +21,21 @@ class Game
     puts "\n- If you do not guess it in the round limit, the computer wins."
     puts "\nReady? (Y/N)"
     puts " "
-    game_start = gets
+    return gets.chomp
   end
 
-  
+  def start_game?(rules)
+    if rules.downcase == "y" || rules.downcase == "yes"
+      puts rules
+    elsif
+      rules.downcase == "n" || rules.downcase == "no"
+      puts "\nI'm sorry you don't want to play.  Goodbye now."
+      exit
+    else
+      puts "I didn't catch that. Please respond with Y or N."
+      start_game?(gets.chomp)
+    end
+  end
 
   
 

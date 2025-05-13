@@ -30,7 +30,9 @@ white_peg = color_list[5]
 # play game
 
 
-game.game_rules(color_list, red_peg, white_peg)
+rules = game.game_rules(color_list, red_peg, white_peg)
+
+game.start_game?(rules)
 
 puts ""
 puts computer_secret_code = comp.secret_code(colors.colors_array) 

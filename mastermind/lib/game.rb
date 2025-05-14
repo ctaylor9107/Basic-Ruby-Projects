@@ -36,6 +36,20 @@ class Game
     end
   end
 
+  def code_chooser?
+    puts "\nWould you like to be the code guesser or the code maker?"
+    puts "Input 1 for code guesser and 2 for code maker:"
+    input = gets.chomp
+    if input == "1"
+      return "guesser"
+    elsif input == "2"
+      return "maker"
+    else
+      puts"\nInvalid input. Please select a 1 or a 2."
+      code_chooser?
+    end
+  end
+
   def who_won?(winner_winner_chicken_dinner, computer_choice)
     if winner_winner_chicken_dinner == true
       puts "\nYou got it! Congratulations, you win!"

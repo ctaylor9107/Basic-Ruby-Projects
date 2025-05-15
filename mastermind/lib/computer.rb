@@ -50,8 +50,68 @@ class Computer
     return white_pegs
   end
 
+  def white_peg_positions(computer_check, player_check)
+    colors = []
+    computer_check.each do | color |
+      if player_check.include?(color)
+        colors.push(color)
+        player_check.slice!(player_check.find_index { |value| value == color})
+      else
+        ""
+      end
+    end
+    return colors
+  end
+
 
   def computer_response(red_peg, white_peg)
     return red_peg + white_peg
   end
+
+  def computer_response_v2(positions, white_peg_positions, red, white)
+    response = []
+    positions.each { | value | response.push(red)}
+    white_peg_positions.each{ | value | response.push(white)}
+    return response
+  end
+
+  def red_peg_array(positions, computer_guess)
+    color_array = ["color", "color", "color", "color"]
+    color_array.each_with_index do | value, index | 
+      if positions.include?(index)
+        color_array[index] = computer_guess[index]
+      else
+        " "
+      end
+    end
+    return color_array
+  end
+
+  def white_peg_changes(red_peg_array, white_peg_colors, computer_guess)
+    red_peg_array.each_with_index do | value, index |
+      if value == "color" && white_peg_colors.include?(computer_guess[index]) == true
+        i = 0
+        until i == 4
+          if red_peg_array[i] == "color" && i != index
+            red_peg_array[i] = computer_guess[index]
+            break
+          else
+          i += 1
+          end
+        end
+        white_peg_colors.slice!(white_peg_colors.find_index { | value | value == computer_guess[index]})
+      end
+    end
+    return red_peg_array
+  end
+
+  def computer_next_guess(white_peg_changes, color_list)
+    white_peg_changes.each_with_index do | value, index |
+      if value == "color"
+        white_peg_changes[index] = color_list[rand(6)]
+      end
+    end
+    return white_peg_changes
+  end
+
 end

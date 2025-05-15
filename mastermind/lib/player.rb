@@ -4,7 +4,7 @@ class Player
     @player = player
   end
 
-  def player_turn(color_list)
+  def player_turn(color_list, guess_or_code)
     puts "\nMake a choice from the below colors"
     puts "\n1. #{color_list[0]}"
     puts "2. #{color_list[1]}"
@@ -12,16 +12,16 @@ class Player
     puts "4. #{color_list[3]}"
     puts "5. #{color_list[4]}"
     puts "6. #{color_list[5]}"
-    player_code_guess(color_list)
+    player_code_guess(color_list, guess_or_code)
   end
 
-  def player_code_guess(color_list)
+  def player_code_guess(color_list, guess_or_code)
     puts "\nChoose from above: 1, 2, 3, 4, 5, or 6"
     puts " "
-    create_player_choice(color_list)
+    create_player_choice(color_list, guess_or_code)
   end
 
-  def create_player_choice(color_list)
+  def create_player_choice(color_list, guess_or_code)
     player_code = []
     i = player_code.length
     while i < 4
@@ -29,13 +29,12 @@ class Player
       if player_input.between?(1, 6) == false
         puts "Invalid input, please try again:"
       elsif player_input.between?(1, 6) == true
-        output = "Your guess: #{player_code.push(color_list[player_input - 1]).join(", ")}"
+        output = "Your #{guess_or_code}: #{player_code.push(color_list[player_input - 1]).join(", ")}"
         puts output
         i = player_code.length
       end
     end
     return player_code
   end
-
 
 end

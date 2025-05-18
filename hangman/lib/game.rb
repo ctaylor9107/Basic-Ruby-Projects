@@ -20,6 +20,13 @@ class Game
     return blank_spaces
   end
 
+  def already_guessed?(wrong_guesses, guess)
+    if wrong_guesses.include?(guess) == false
+      return false
+    elsif wrong_guesses.include?(guess) == true
+      return true
+    end
+  end
   
   def wrong_guesses(wrong_guesses, guess)
     wrong_guesses.push(guess)

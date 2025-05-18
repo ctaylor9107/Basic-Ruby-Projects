@@ -45,4 +45,15 @@ class Game
     end
   end
 
+  def save_game?(input)
+    if input.downcase == "y" or input.downcase == "yes"
+      return true
+    elsif input.downcase == "n" or input.downcase == "no"
+      return false
+    else
+      puts "\nPlease enter Y or N."
+      save_game?(gets.chomp)
+    end
+  end
+
 end

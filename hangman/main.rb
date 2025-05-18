@@ -2,6 +2,7 @@ require_relative 'lib/hangman.rb'
 require_relative 'lib/word.rb'
 require_relative 'lib/player.rb'
 require_relative 'lib/game.rb'
+require_relative 'lib/game_state.rb'
 
 
 
@@ -29,6 +30,14 @@ puts ""
 
 i = 0
 until i == 6
+  puts "\nSave your game? (Y/N):"
+  input = game.save_game?(gets.chomp)
+  if input == true
+    ""
+  elsif input == false
+    ""
+  end
+  puts "\nGuess a letter:"
   guess = player1.player_guess(gets.chomp)
   puts "Your guess: #{guess}"
   if player1.player_guess_correct?(guess, secret_word) == true
@@ -52,6 +61,13 @@ until i == 6
   elsif player1.player_guess_correct?(guess, secret_word) == false && game.already_guessed?(wrong_guesses, guess) == true
     puts "\nYou already guessed that letter, try again."
   end
+  # input = gets.chomp
+  # if input == "y"
+  #   game_state = GameState.new(current_state, secret_word, blank_spaces, wrong_guesses)
+  #   p game_state.to_yaml
+  # else
+  #   ""
+  # end
 end
 
 puts "\nGame Over"

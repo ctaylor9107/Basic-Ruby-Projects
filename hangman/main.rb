@@ -7,13 +7,16 @@ word_to_guess = Word.new('word')
 player1 = Player.new('player')
 
 secret_word = word_to_guess.secret_word
-letters = word_to_guess.blank_spaces(secret_word)
+letters = word_to_guess.letters(secret_word)
+blank_spaces = word_to_guess.blank_spaces(letters)
 hangman_call = hangman.hangman_array
+current_statue = hangman_call[0]
 
-puts hangman_call[6]
+puts current_statue
 puts ""
 puts secret_word
 puts letters.join(" ")
+puts blank_spaces.join(" ")
 puts ""
 puts guess = player1.player_guess(gets.chomp)
 puts player1.player_guess_correct?(guess, secret_word)

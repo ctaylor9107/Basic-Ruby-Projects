@@ -11,8 +11,11 @@ class Word
     return secret_word.chomp
   end
 
-  def blank_spaces(secret_word)
-    letters = secret_word.split("")
+  def letters(secret_word)
+    secret_word.split("")
+  end
+
+  def blank_spaces(letters)
     spaces = []
     letters.each do |letter|
       spaces.push('_')

@@ -8,7 +8,7 @@ class Word
     word_choice = File.readlines('/home/ctaylor91/repos/Basic-Ruby-Projects/hangman/words.txt').select { |word| word.chomp.length >= 5 && word.chomp.length <= 12}
     length = word_choice.length
     secret_word = word_choice[rand(length)]
-    return secret_word
+    return secret_word.chomp
   end
 
   def blank_spaces(secret_word)

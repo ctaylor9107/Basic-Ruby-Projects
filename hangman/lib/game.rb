@@ -4,6 +4,7 @@ class Game
   def initialize
   end
 
+
   def update_blanks(guess, letters, blank_spaces)
     index_array = []
     letters.each_with_index do | letter, index |
@@ -17,6 +18,16 @@ class Game
       end      
     end 
     return blank_spaces
+  end
+
+  
+  def wrong_guesses(wrong_guesses, guess)
+    wrong_guesses.push(guess)
+  end
+
+
+  def update_hangman_state(hangman, wrong_guesses)
+    hangman[wrong_guesses.length]
   end
 
 end

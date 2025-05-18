@@ -33,7 +33,13 @@ until i == 6
   puts "\nSave your game? (Y/N):"
   input = game.save_game?(gets.chomp)
   if input == true
-    ""
+    game_state = GameState.new(current_state, secret_word, blank_spaces, wrong_guesses)
+    # game_state_data = game_state.to_yaml
+    puts "\nName your save file:"
+    save_file_name = gets.chomp.gsub(" ","_")
+    save_file = File.new("./lib/save_files/#{save_file_name}.txt", "w+")
+    save_file.puts game_state.to_yaml
+    save_file.close
   elsif input == false
     ""
   end
@@ -61,13 +67,6 @@ until i == 6
   elsif player1.player_guess_correct?(guess, secret_word) == false && game.already_guessed?(wrong_guesses, guess) == true
     puts "\nYou already guessed that letter, try again."
   end
-  # input = gets.chomp
-  # if input == "y"
-  #   game_state = GameState.new(current_state, secret_word, blank_spaces, wrong_guesses)
-  #   p game_state.to_yaml
-  # else
-  #   ""
-  # end
 end
 
 puts "\nGame Over"
@@ -76,18 +75,3 @@ if game.player_won?(blank_spaces, wrong_guesses) == true
 elsif game.player_won?(blank_spaces, wrong_guesses) == false
   puts "\nSorry, you lose. Better luck next time."
 end
-
-
-
-
-  # puts current_state
-  # puts ""
-  # puts secret_word
-  # puts letters.join(" ")
-  # puts blank_spaces.join(" ")
-  # puts ""
-  # puts guess = player1.player_guess(gets.chomp)
-  # puts player1.player_guess_correct?(guess, secret_word)
-  # puts game.update_blanks(guess, letters, blank_spaces).join(" ")
-  # puts "Wrong guesses: #{game.wrong_guesses(wrong_guesses, guess)}"
-  # puts game.update_hangman_state(hangman_call, wrong_guesses)

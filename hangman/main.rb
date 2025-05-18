@@ -53,8 +53,13 @@ until i == 6
     puts "\nYou already guessed that letter, try again."
   end
 end
-puts ""
-puts "Game Over"
+
+puts "\nGame Over"
+if game.player_won?(blank_spaces, wrong_guesses) == true
+  puts "\nCongratulations, you win!"
+elsif game.player_won?(blank_spaces, wrong_guesses) == false
+  puts "\nSorry, you lose. Better luck next time."
+end
 
 
 

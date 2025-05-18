@@ -37,4 +37,12 @@ class Game
     hangman[wrong_guesses.length]
   end
 
+  def player_won?(blank_spaces, wrong_guesses)
+    if blank_spaces.include?("_") == false
+      return true
+    elsif wrong_guesses.length == 6
+      return false
+    end
+  end
+
 end

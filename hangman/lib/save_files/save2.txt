@@ -1,0 +1,23 @@
+---
+:hangman_state:
+- "      ____   "
+- "     |    |  "
+- "    _O    |  "
+- "          |  "
+- "          |  "
+:secret_word: televisions
+:blank_spaces:
+- t
+- _
+- l
+- _
+- _
+- i
+- _
+- i
+- _
+- _
+- _
+:wrong_guesses:
+- m
+- p

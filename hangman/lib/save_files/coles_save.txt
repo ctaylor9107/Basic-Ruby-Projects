@@ -1,0 +1,21 @@
+---
+:hangman_state:
+- "      ____   "
+- "     |    |  "
+- "    _O    |  "
+- "          |  "
+- "          |  "
+:secret_word: forecasts
+:blank_spaces:
+- _
+- o
+- r
+- _
+- _
+- a
+- _
+- t
+- _
+:wrong_guesses:
+- b
+- w

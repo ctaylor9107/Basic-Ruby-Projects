@@ -1,0 +1,23 @@
+---
+:hangman_state:
+- "      ____   "
+- "     |    |  "
+- "    _O    |  "
+- "          |  "
+- "          |  "
+:secret_word: attractions
+:blank_spaces:
+- _
+- t
+- t
+- _
+- _
+- _
+- t
+- _
+- o
+- _
+- s
+:wrong_guesses:
+- p
+- x

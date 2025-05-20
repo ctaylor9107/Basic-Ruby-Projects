@@ -17,4 +17,9 @@ class GameState
       :wrong_guesses => @wrong_guesses
     })
   end
+
+  def self.from_yaml(save_file)
+    data = YAML.load save_file
+    self.new(data[:hangman_state], data[:secret_word], data[:blank_spaces], data[:wrong_guesses])
+  end
 end

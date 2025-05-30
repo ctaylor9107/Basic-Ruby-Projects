@@ -21,4 +21,14 @@ class HashMap
     hasher = hash(key) % 16
     @buckets[hasher] = [key, value]
   end
+
+  def get(key)
+    @buckets.each do |entry|
+      if entry[0] == key
+        return entry[1]
+      end
+    end
+    nil
+  end
+
 end

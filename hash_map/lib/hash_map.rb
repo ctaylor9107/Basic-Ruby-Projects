@@ -3,7 +3,7 @@ require_relative 'linked_list.rb'
 
 # Class for the Hash Map Data Structure
 class HashMap
-  attr_reader :buckets
+  attr_reader :buckets, :capacity
   
   def initialize(load_factor, capacity)
     @load_factor = load_factor
@@ -25,9 +25,30 @@ class HashMap
    hash_code % @buckets.length
   end
 
+  def increase_capacity?
+    if (@capacity * @load_factor) < self.entries.length
+      return true
+    elsif (@capacity * @load_factor) >= self.entries.length
+      return false
+    end
+  end
+
   def set(key, value)
     hasher = hash(key)
     @buckets[hasher].append([key, value])
+    if self.increase_capacity?
+      entries = self.entries
+      @capacity = @capacity * 2
+      @buckets = Array.new(@capacity)
+      i = 0
+      until i == @capacity
+        @buckets[i] = LinkedList.new
+        i += 1
+      end
+      entries.each do |entry|
+        set(entry[0], entry[1])
+      end
+    end
   end
 
   def get(key)
@@ -100,6 +121,14 @@ class HashMap
     entries = self.entries
     keys = []
     entries.each { |entry| keys.push(entry[0]) }
-    p keys
+    return keys
   end
+
+  def values
+    entries = self.entries
+    values = []
+    entries.each { |entry| values.push(entry[1]) }
+    return values
+  end
+
 end

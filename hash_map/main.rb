@@ -51,4 +51,6 @@ test.set('lion', 'golden')
 
 p test.entries
 
+test.keys
+
 

@@ -95,5 +95,11 @@ class HashMap
       i += 1
     end
   end
-  
+
+  def keys
+    entries = self.entries
+    keys = []
+    entries.each { |entry| keys.push(entry[0]) }
+    p keys
+  end
 end

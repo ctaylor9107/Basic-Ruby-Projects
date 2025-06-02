@@ -81,4 +81,9 @@ class HashMap
       nil
     end
   end
+
+  def length
+    self.entries.length
+  end
+
 end

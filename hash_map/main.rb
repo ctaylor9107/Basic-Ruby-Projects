@@ -30,4 +30,6 @@ p test.remove('grape')
 
 p test.entries
 
+p test.length
+
 

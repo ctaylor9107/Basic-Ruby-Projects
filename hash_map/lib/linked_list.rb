@@ -87,11 +87,22 @@ class LinkedList
     false
   end
 
-  def get_value(key, size)
+  def get_value(key)
     curr_node = @head
     until curr_node == nil
       if curr_node.value[0] == key
         return curr_node.value[1]
+      elsif curr_node.value[0] != key
+        curr_node = curr_node.next_node
+      end
+    end
+  end
+
+  def get_entry(key)
+    curr_node = @head
+    until curr_node == nil
+      if curr_node.value[0] == key
+        return curr_node.value
       elsif curr_node.value[0] != key
         curr_node = curr_node.next_node
       end
@@ -103,8 +114,7 @@ class LinkedList
     node_index = 0
     until curr_node.nil?
       if curr_node.value == value
-        print node_index
-        output = ""
+        output = node_index
         break
       elsif curr_node.value != value
         curr_node = curr_node.next_node
@@ -112,7 +122,7 @@ class LinkedList
         output = 'nil'
       end
     end
-    print output
+    output
   end
 
   def to_s

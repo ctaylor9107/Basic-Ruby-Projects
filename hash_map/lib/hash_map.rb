@@ -33,7 +33,7 @@ class HashMap
   def get(key)
     @buckets.each do |entry|
       if entry.contains?(key)
-        return entry.get_value(key, entry.size)                                                        
+        return entry.get_value(key)                                                        
       end
     end
     nil
@@ -63,5 +63,22 @@ class HashMap
       end
     end
     entries
+  end
+
+  def remove(key)
+    if self.has?(key)
+      @buckets.each do |entry|
+        this_key = entry.get_entry(key)
+        if this_key != nil
+          index = entry.find(this_key)
+          entry.remove_at(index)
+          return this_key
+        else
+         nil
+        end
+      end
+    elsif !self.has?(key)
+      nil
+    end
   end
 end

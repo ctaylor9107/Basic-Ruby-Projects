@@ -26,5 +26,8 @@ puts test.get('ice cream')
 
 p test.entries
 
+p test.remove('grape')
+
+p test.entries
 
 

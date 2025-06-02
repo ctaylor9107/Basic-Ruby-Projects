@@ -86,4 +86,14 @@ class HashMap
     self.entries.length
   end
 
+  def clear
+    @capcity = 16
+    @buckets = Array.new(@capacity)
+    i = 0
+    until i == @capacity
+      @buckets[i] = LinkedList.new
+      i += 1
+    end
+  end
+  
 end

@@ -78,6 +78,12 @@ puts test.get('ice cream')
 
 p test.remove('grape')
 
+p test.remove('hat')
+
+test.remove('lion')
+
+puts test.buckets
+
 p test.length
 
 p test.entries

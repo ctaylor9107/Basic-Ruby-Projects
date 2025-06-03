@@ -63,6 +63,9 @@ puts test.buckets
 
 puts test.length
 
+test.set('kite', 'diamond')
+puts test.set('frog', 'gross')
+
 puts test.keys
 
 p test.entries
@@ -98,4 +101,9 @@ test.set('lion', 'golden')
 test.set('moon', 'silver')
 
 p test.entries
+
+test.set('apple', 'round')
+test.set('elephant', 'huge')
+
+puts test.buckets
 

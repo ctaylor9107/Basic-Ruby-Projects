@@ -35,7 +35,12 @@ class HashMap
 
   def set(key, value)
     hasher = hash(key)
-    @buckets[hasher].append([key, value])
+    if @buckets[hasher].contains?(key)
+      self.remove(key)
+      @buckets[hasher].append([key, value])
+    elsif !@buckets[hasher].contains?(key)
+      @buckets[hasher].append([key, value])
+    end
     if self.increase_capacity?
       entries = self.entries
       @capacity = @capacity * 2

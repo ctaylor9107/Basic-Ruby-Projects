@@ -171,7 +171,12 @@ class LinkedList
   def remove_at(index)
     curr_node = @head
     if index == 0
-      @head = @head.next_node
+      if @head == @tail
+        @head = nil
+        @tail = nil
+      elsif @head != @tail
+        @head = @head.next_node
+      end
     elsif index > 0
       i = 0
       until i == index - 1 || curr_node.nil?

@@ -28,7 +28,7 @@ class Tree
     pretty_print(node.left_node, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left_node
   end
 
-  def insert(value, node)
+  def insert(value, node = @root)
     if node == nil
      return Node.new(value)
     elsif node.data == value
@@ -49,7 +49,7 @@ class Tree
     return curr
   end
 
-  def delete(value, node)
+  def delete(value, node = @root)
     if node == nil
       nil
     elsif node.data == value
@@ -74,7 +74,7 @@ class Tree
     return node    
   end
 
-  def find(value, node)
+  def find(value, node = @root)
     if node.data == value
      return node
     elsif node.left_node.nil? && node.right_node.nil?

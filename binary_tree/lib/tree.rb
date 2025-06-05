@@ -28,6 +28,19 @@ class Tree
     pretty_print(node.left_node, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left_node
   end
 
+  def insert(value, node)
+    if node == nil
+     return Node.new(value)
+    elsif node.data == value
+      return node
+    elsif value < node.data
+      node.left_node = insert(value, node.left_node)
+    elsif value > node.data
+      node.right_node = insert(value, node.right_node) 
+    end 
+    return node
+  end
+
   def find(value, node)
     if node.data == value
      return node

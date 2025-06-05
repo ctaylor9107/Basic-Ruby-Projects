@@ -123,5 +123,56 @@ class Tree
       level_arr.map { |node| node.data}
     end
   end
+
+  def preorder(node = @root, array = [])
+    if node == nil
+      nil
+    else
+      array.push(node)
+      preorder(node.left_node, array)
+      preorder(node.right_node, array)
+    end
+    if block_given?
+      array.each do |node|
+        yield node
+      end
+    elsif !block_given?
+      array.map { |node| node.data}
+    end
+  end
+
+  def inorder(node = @root, array = [])
+    if node == nil
+      nil
+    else
+      inorder(node.left_node, array)
+      array.push(node)
+      inorder(node.right_node, array)
+    end
+    if block_given?
+      array.each do |node|
+        yield node
+      end
+    elsif !block_given?
+      array.map { |node| node.data}
+    end
+  end
+
+  def postorder(node = @root, array = [])
+    if node == nil
+      nil
+    else
+      postorder(node.left_node, array)
+      postorder(node.right_node, array)
+      array.push(node)
+    end
+    if block_given?
+      array.each do |node|
+        yield node
+      end
+    elsif !block_given?
+      array.map { |node| node.data}
+    end
+  end
   
 end

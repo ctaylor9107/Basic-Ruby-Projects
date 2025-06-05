@@ -95,5 +95,33 @@ class Tree
       end
     end
   end
+
+  def level_order
+    node = @root
+    queue = [node]
+    level_arr = []
+    until queue == []
+      if !queue[0].left_node.nil? && !queue[0].right_node.nil?
+        queue.push(queue[0].left_node)
+        queue.push(queue[0].right_node)
+        level_arr.push(queue.shift)
+      elsif queue[0].left_node.nil? && !queue[0].right_node.nil?
+        queue.push(queue[0].right_node)
+        level_arr.push(queue.shift)
+      elsif !queue[0].left_node.nil? && queue[0].right_node.nil?
+        queue.push(queue[0].left_node)
+        level_arr.push(queue.shift)
+      else
+        level_arr.push(queue.shift)
+      end
+    end
+    if block_given?
+      level_arr.each do |node|
+        yield node
+      end
+    elsif !block_given?
+      level_arr.map { |node| node.data}
+    end
+  end
   
 end

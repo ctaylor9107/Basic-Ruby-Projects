@@ -41,6 +41,39 @@ class Tree
     return node
   end
 
+  def get_successor(curr)
+    curr = curr.right_node
+    while (!curr.nil? && !curr.left_node.nil?)
+      curr = curr.left_node
+    end
+    return curr
+  end
+
+  def delete(value, node)
+    if node == nil
+      nil
+    elsif node.data == value
+      if node.left_node.nil? && node.right_node.nil?
+        return nil
+      elsif node.left_node.nil? && !node.right_node.nil?
+        return node.right_node
+      elsif !node.left_node.nil? && node.right_node.nil?
+        return node.left_node
+      elsif !node.left_node.nil? && !node.right_node.nil?
+        succ = get_successor(node)
+        node.data = succ.data
+        node.right_node = delete(succ.data, node.right_node)        
+      end
+    else
+      if value < node.data
+        node.left_node = delete(value, node.left_node)
+      elsif value > node.data
+        node.right_node = delete(value, node.right_node)
+      end
+    end
+    return node    
+  end
+
   def find(value, node)
     if node.data == value
      return node

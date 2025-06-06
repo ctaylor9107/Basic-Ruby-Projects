@@ -204,44 +204,6 @@ class Tree
     end
     return array.max
   end
-
-  # def distance(value, node, distance)
-  #   if node.data == value
-  #     distance
-  #   elsif node.left_node.nil? && node.right_node.nil?
-  #     ""
-  #   elsif !node.left_node.nil? && node.right_node.nil?
-  #     distance += 1
-  #     distance(value, node.left_node, distance)
-  #   elsif node.left_node.nil? && !node.right_node.nil?
-  #     distance += 1
-  #     distance(value, node.right_node, distance)
-  #   elsif !node.left_node.nil? && !node.right_node.nil?
-  #     distance += 1
-  #     distance(value, node.left_node, distance)
-  #     distance(value, node.right_node, distance)
-  #   end
-  #   if final > 0
-  #     return "pie"
-  #   else
-  #     puts "peanuts"
-  #   end
-  # end
-
-  # def depth(value)
-  #   node = find(value)
-  #   if node == nil
-  #     return nil
-  #   elsif node == @root
-  #     return 0
-  #   else
-  #     puts "pie"
-  #     puts node.data
-  #     puts @root.data
-  #     final = distance(value, @root, 0)
-  #   end
-  #   return final
-  # end
   
   def depth(value, level=0, node=@root)
     queue = {node => level}
@@ -272,4 +234,24 @@ class Tree
     return level_hash[value]
   end
   
+  def balanced?
+    level_order do |node|
+      if !node.left_node.nil? && !node.right_node.nil?
+        difference = height(node.left_node.data) - height(node.right_node.data)
+      elsif node.left_node.nil? && !node.right_node.nil?
+        difference = height(node.right_node.data) - (-1)
+      elsif !node.left_node.nil? && node.right_node.nil?
+        difference = height(node.left_node.data) - (-1)
+      elsif node.left_node.nil? && node.right_node.nil?
+        difference = -1 - (-1)
+      end
+      if difference > 1 || difference < -1
+        return false
+      else
+        true
+      end
+    end
+    true
+  end
+
 end

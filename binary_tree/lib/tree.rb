@@ -174,5 +174,34 @@ class Tree
       array.map { |node| node.data}
     end
   end
+
+  def get_height(node, counter, array)
+    if node.left_node.nil? && node.right_node.nil?
+      array.push(counter)
+    elsif !node.left_node.nil? && node.right_node.nil?
+      counter += 1
+      get_height(node.left_node, counter, array)
+    elsif node.left_node.nil? && !node.right_node.nil?
+      counter += 1
+      get_height(node.right_node, counter, array)
+    elsif !node.left_node.nil? && !node.right_node.nil?
+      counter += 1
+      get_height(node.left_node, counter, array)
+      get_height(node.right_node, counter, array)
+    end
+    return array
+
+  end
+
+  def height(value)
+    node = find(value)
+    if node.left_node.nil? && node.right_node.nil?
+      return 0
+    else
+      i = 0
+      array = get_height(node, i, [])
+    end
+    return array.max
+  end
   
 end

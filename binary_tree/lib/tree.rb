@@ -195,7 +195,9 @@ class Tree
 
   def height(value)
     node = find(value)
-    if node.left_node.nil? && node.right_node.nil?
+    if node == nil
+      return nil
+    elsif node.left_node.nil? && node.right_node.nil?
       return 0
     else
       i = 0

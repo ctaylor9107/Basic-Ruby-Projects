@@ -255,8 +255,13 @@ class Tree
   end
 
   def rebalance
-    new_tree = inorder(@root)
-    @root = build_tree(new_tree, 0, new_tree.length - 1) 
+    if balanced?
+      return "Already balanced"
+    elsif !balanced?
+      new_tree = inorder(@root)
+      @root = build_tree(new_tree, 0, new_tree.length - 1)
+      return "The tree is now balanced"
+    end
   end
 
 end

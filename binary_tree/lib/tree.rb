@@ -190,7 +190,6 @@ class Tree
       get_height(node.right_node, counter, array)
     end
     return array
-
   end
 
   def height(value)
@@ -204,6 +203,73 @@ class Tree
       array = get_height(node, i, [])
     end
     return array.max
+  end
+
+  # def distance(value, node, distance)
+  #   if node.data == value
+  #     distance
+  #   elsif node.left_node.nil? && node.right_node.nil?
+  #     ""
+  #   elsif !node.left_node.nil? && node.right_node.nil?
+  #     distance += 1
+  #     distance(value, node.left_node, distance)
+  #   elsif node.left_node.nil? && !node.right_node.nil?
+  #     distance += 1
+  #     distance(value, node.right_node, distance)
+  #   elsif !node.left_node.nil? && !node.right_node.nil?
+  #     distance += 1
+  #     distance(value, node.left_node, distance)
+  #     distance(value, node.right_node, distance)
+  #   end
+  #   if final > 0
+  #     return "pie"
+  #   else
+  #     puts "peanuts"
+  #   end
+  # end
+
+  # def depth(value)
+  #   node = find(value)
+  #   if node == nil
+  #     return nil
+  #   elsif node == @root
+  #     return 0
+  #   else
+  #     puts "pie"
+  #     puts node.data
+  #     puts @root.data
+  #     final = distance(value, @root, 0)
+  #   end
+  #   return final
+  # end
+  
+  def depth(value, level=0, node=@root)
+    queue = {node => level}
+    level_hash = {}
+    if value == node
+      return 0
+    else
+      until level_hash.has_key?(value) || queue == {}
+        if !queue.first[0].left_node.nil? && !queue.first[0].right_node.nil?
+          queue[queue.first[0].left_node] = queue.first[1] + 1
+          queue[queue.first[0].right_node] = queue.first[1] + 1
+          shift = queue.shift
+          level_hash = {shift[0].data => shift[1]}
+        elsif queue.first[0].left_node.nil? && !queue.first[0].right_node.nil?
+          queue[queue.first[0].right_node] = queue.first[1] + 1
+          shift = queue.shift
+          level_hash = {shift[0].data => shift[1]}
+        elsif !queue.first[0].left_node.nil? && queue.first[0].right_node.nil?
+          queue[queue.first[0].left_node] = queue.first[1] + 1
+          shift = queue.shift
+          level_hash = {shift[0].data => shift[1]}
+        elsif queue.first[0].left_node.nil? && queue.first[0].right_node.nil?
+          shift = queue.shift
+          level_hash = {shift[0].data => shift[1]}
+        end
+      end
+    end
+    return level_hash[value]
   end
   
 end

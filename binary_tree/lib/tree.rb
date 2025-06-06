@@ -254,4 +254,9 @@ class Tree
     true
   end
 
+  def rebalance
+    new_tree = inorder(@root)
+    @root = build_tree(new_tree, 0, new_tree.length - 1) 
+  end
+
 end
